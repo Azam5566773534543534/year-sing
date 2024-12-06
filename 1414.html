@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Год Рождения</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Элементы вверху страницы */
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0; /* Удаляем отступы по умолчанию */
+            padding: 20px; /* Добавляем немного отступа */
+        }
+        #birthYearInput {
+            width: 200px;
+            height: 40px;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        #result {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px; /* Отступ сверху для результата */
+        }
+        #animalImage {
+            margin-top: 20px;
+            width: 150px; /* Ширина изображения */
+            display: none; /* Скрываем изображение изначально */
+        }
+    </style>
+</head>
+<body>
+    <h1>Введите свой год рождения:</h1>
+    <input type="number" id="birthYearInput" placeholder="Год" />
+    <button onclick="showSign()">Узнать знак</button>
+    <div id="result"></div>
+    <img id="animalImage" src="" alt="Животное по знаку">
+
+    <script>
+        function showSign() {
+            const year = document.getElementById('birthYearInput').value;
+            const signs = {
+                0: 'Обезьяна',
+                1: 'Петух',
+                2: 'Собака',
+                3: 'Свинья',
+                4: 'Крыса',
+                5: 'Бык',
+                6: 'Тигр',
+                7: 'Заяц',
+                8: 'Дракон',
+                9: 'Змея',
+                10: 'Лошадь',
+                11: 'Коза'
+            };
+            
+            const images = {
+                'Обезьяна': 'https://i.pinimg.com/474x/28/26/3c/28263ce44d75dd1938c1a25329f14a9f.jpg?nii=t',
+                'Петух': 'https://avatars.mds.yandex.net/i?id=50d2404e2a8ea7aed44f7c24a1bd86fc50261db6-5887216-images-thumbs&n=13',
+                'Собака': 'https://avatars.mds.yandex.net/i?id=2274d9bb34a222fb55ff3ffc316ebfb78ab08bb9-12644864-images-thumbs&n=13',
+                'Свинья': 'https://i.pinimg.com/originals/1d/67/ae/1d67ae1830ed3010ea15f7027e90f2b5.jpg',
+                'Крыса': 'https://avatars.mds.yandex.net/i?id=fcfd2b8855dc87843f4ce5207aa5ae47a7dad162-13014061-images-thumbs&n=13',
+                'Бык': 'https://i.pinimg.com/736x/e8/35/1b/e8351bd6c69d5e5e4df0e10ca2d3f044.jpg',
+                'Тигр': 'https://www.sunhome.ru/i/foto/243/zastavlyaet-ulibnutsya-v8.xl.jpg',
+                'Заяц': 'https://otvet.imgsmail.ru/download/8559272_822a45bbbec2d025030b47159c839728_800.jpg',
+                'Дракон': 'https://avatars.mds.yandex.net/i?id=99abae4e1e767990cfd049cdc29327bd_l-4828420-images-thumbs&n=13',
+                'Змея': 'https://clipart-library.com/images/pTo5e5Xnc.jpg',
+                'Лошадь': 'https://steamuserimages-a.akamaihd.net/ugc/2042980157152266848/8444167265449EB531E5CC3072120C7842326BF6/?imw=512&amp;imh=288&amp;ima=fit&amp;impolicy=Letterbox&amp;imcolor=%23000000&amp;letterbox=true',
+                'Коза': 'https://otvet.imgsmail.ru/download/45488177_e1fc8ac7fe1036fb54567c95de040410_800.jpg'
+            };
+
+            const sign = signs[year % 12];
+            document.getElementById('result').innerText = `Ну ты и ${sign}`;
+            const animalImage = document.getElementById('animalImage');
+            animalImage.src = images[sign]; // Устанавливаем ссылку на изображение
+            animalImage.style.display = 'block'; // Показываем изображение
+        }
+    </script>
+</body>
+</html>
